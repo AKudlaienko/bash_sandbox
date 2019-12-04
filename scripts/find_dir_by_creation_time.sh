@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# This script can find subfolders based on a creation date.
+# The script searches folders under the provided path then checks corresponding
+# inode creation time and compares it with a provided time gap in seconds.
+# So, if the period provided is bigger than the offset (timestamp_now - folder_creation_timestamp)
+# the script prints the result or can remove corresponding folders if --remove option was specified.
 
 usage() {
   echo -e "\nUsage:\n  $0 -d /tmp/test -D /dev/vda1 -p 2629743\
