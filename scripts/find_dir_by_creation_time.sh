@@ -67,7 +67,7 @@ fi
 
 
 for e_folder in $(find $DIR -mindepth 1 -maxdepth 1 -type d | xargs);do
-  RES=$(sudo debugfs -R "stat <$(ls -id $e_folder | cut -d' ' -f1)>" "$DEVICE" 2>/dev/null)
+  RES=$(debugfs -R "stat <$(ls -id $e_folder | cut -d' ' -f1)>" "$DEVICE" 2>/dev/null)
   raw_folder_timestamp=$(echo -e "$RES" | tail -4 | grep crtime | awk -F"--" '{print$2}' | awk '{$1=$1;print}')
   folder_timestamp=$(date +"%s" -d "$raw_folder_timestamp")
 
